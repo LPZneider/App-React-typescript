@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { UserInfo } from "../../models";
+import { clearLocalStroge, persistLocalStroge } from "../../utilities";
 
 export const EmptyUserState: UserInfo = {
   id: 0,
@@ -7,15 +8,7 @@ export const EmptyUserState: UserInfo = {
   email: "",
 };
 
-export const persistLocalStroge = <T,>(key: string, value: T) => {
-  localStorage.setItem(key, JSON.stringify({ ...value }));
-};
-
-export const clearLocalStroge = (key: string) => {
-  localStorage.removeItem(key);
-};
-
-const UserKey = "user";
+export const UserKey = "user";
 
 export const userSlice = createSlice({
   name: "user",
